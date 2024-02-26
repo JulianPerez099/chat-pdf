@@ -1,5 +1,4 @@
 <script>
-  import { renderToBufferDestination } from "astro/runtime/server/render/util.js";
   import {
     appStatus,
     setAppStatusLoading,
@@ -34,9 +33,8 @@
         return;
       }
 
-      const result = await res.json();
-      console.log(result);
-      setAppStatusChatMode(result);
+      const { id, url, pages } = await res.json();
+      setAppStatusChatMode({ id, url, pages });
     }
   }
 </script>
